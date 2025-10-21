@@ -93,7 +93,60 @@ true=>1 ; false=>0
 */
 
 
-let someNumber=33
-let stringNumber=String(someNumber)
-console.log(stringNumber) //33
-console.log(typeof stringNumber)  //string
+// let someNumber=33
+// let stringNumber=String(someNumber)
+// console.log(stringNumber) //33
+// console.log(typeof stringNumber)  //string
+
+
+//*************************Operations***********************
+ let value=3
+ let negValue=-value
+ //console.log(negValue)
+
+//  console.log(2+2);
+//  console.log(2-2);
+//  console.log(2*2);
+//  console.log(2**3);
+//  console.log(2/2);
+//  console.log(2%2);
+
+let str1="hello"
+let str2=" ayushi"
+let str3=str1+str2
+//console.log(str3) //hello ayushi
+
+//  console.log("1"+2);  //aana chahiye tha 3 but aaya 12
+//  console.log(1+"2");  //aana chahiye tha 3 but aaya 12
+//   console.log("1"+"2"); //12
+//   console.log("1"+2+2); //122
+//   console.log(1+2+"2")  //32
+
+//   console.log(3+4*5 % 3); //dont write like this,use proper parenthesis
+//     console.log((3+4)*5 % 3); //write like this
+
+    console.log(true);
+    console.log(+true); //1 because true is boolean and it is incremented by 1
+                        // as true cant be incremented so,it gives value as 1
+    //console.log(true+); //error
+    console.log(+""); //0
+
+    let num1,num2,num3
+    num1=num2=num3=2+2  //not a good way of writing
+
+    let gameCounter=100
+    gameCounter++; //or ++gameCounter
+    console.log(gameCounter); //101
+
+    /*prefix and postfix increment
+    a=3
+    prefix=++a;
+    let b=a   first a is incremented and then value is assigned to be
+              b=4 and a=4
+    postfix=a++
+    let b=a  first value is assigned to b and then a is incremented
+             a=4,b=3 
+     */
+    //link to study
+    //   https://tc39.es/ecma262/2023/#sec-type-conversion                  
+ 
