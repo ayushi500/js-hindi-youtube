@@ -44,3 +44,30 @@ const myFunction=function(){
 
 console.log(typeof bigNumber); //undefined
 console.log(typeof myFunction); //function
+
+
+//****************************************************** 
+
+/*Stack memory used for Primitive Type, Heap Memory used for Non-Primitive
+stack memory jb bhi use hoti h..iska mtlb jo bhi maine variable 
+declare kiya h,uska copy milega
+and jb koi value Heap ke andar define hoti h to hume original value ka
+refernce milta h
+*/
+
+let myYoutubename="hiteshchoudharydotcom"
+let anotherName=myYoutubename;
+anotherName="chai aur code"
+console.log(myYoutubename);
+
+console.log(anotherName)
+
+let obj1={
+  email:"ayu.gmail.com",
+  upi:"ayu"
+}
+let obj2=obj1;
+obj2.email="chai aur main"
+console.log(obj2);
+console.log(obj1);
+
