@@ -84,4 +84,36 @@ console.log(tinderUser2) // {}
     price:"999",
     courseInstructor:"hitesh"
    }
-//course.courseInstructor
+//   course.courseInstructor ->'hitesh
+//More cleaner way
+const {courseInstructor}=course
+console.log(courseInstructor) //hitesh
+
+//also we can do this like this
+const {courseInstructor:instructor}=course
+console.log(instructor)  //hitesh
+
+
+//Methods ->props by default hota h
+const navbar=({company})=>{
+
+}
+navbar(company="hitesh");
+
+//*****************************API*************************************
+
+//api object ke format me milti hain
+//JSON-it is like object ->keys and values both are string
+{
+   "name":"ayushi",
+   "coursename":"js in hindi",
+   "price":"free"
+}
+
+//kai baar api array ke form me bhi milti hain
+[
+   {},
+   {},
+   {}
+]
+//JSON formatter converts the api into readable form
