@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: black; color:#fff;">
+    <div class="parent">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+    </div>
+</body>
+
+<script>
+    const parent=document.querySelector(".parent")
+    console.log(parent.children)  //return HTML collection of its children
+    /* ans
+0 :div.day
+1 : div.day
+2 : div.day
+3  : div.day
+    */
+
+    //parent se child pe move kr rhe hain
+    console.log(parent.children[1].innerHTML); //Tuesday
+   //classic for loop chlega HTML collection pe
+    for (let i = 0; i < parent.children.length; i++) {
+        console.log(parent.children[i].innerHTML);  //Monday,Tuesday,Wednesday,Thursday
+    }
+
+    parent.children[1].style.color="pink"
+    console.log(parent.firstElementChild);  //<div class="day">Monday</div>
+    console.log(parent.lastElementChild);  //<div class="day">Thursday</div>
+
+    //ab child se parent pe move krenge
+    const dayOne= document.querySelector('.day')
+    console.log(dayOne)  //<div class="day">Monday</div>
+    console.log(dayOne.parentElement) //<div class="parent">
+    console.log(dayOne.nextElementSibling);  //<div class="day" style="color: pink;">Tuesday</div>
+
+
+    console.log("NODES :",parent.childNodes)  //parent ki kitni nodes hain=>9
+    
+    
+
+
+
+
+
+
+</script>
+</html>

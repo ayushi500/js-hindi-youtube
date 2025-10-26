@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chai aur code | DOM</title>
+</head>
+<body style="background-color:black; color:whitesmoke;">
+    <ul class="language">
+        <li>JavaScript</li>
+    </ul>
+</body>
+<script>
+    //creating function to add more list items
+    function addLanguage(langName){
+        //creating list item
+        //selecting the parent 
+        //appending the list item into parent
+        const li=document.createElement('li')
+        li.innerText=`${langName}`
+        const parent=document.querySelector('.language')
+        parent.appendChild(li)
+        /* Or
+        document.querySelector('.language').appendChild(li)
+        */
+    }
+
+    addLanguage("Java")
+    addLanguage("python")  //But this method is not optimise for large scale
+
+    //More Optimised Way -> yha poora tree nhi traverse krna pd rha h
+    function addOptiLanguage(langName){
+        const li=document.createElement('li')
+        li.appendChild(document.createTextNode(langName))
+        document.querySelector('.language').appendChild(li)
+    }
+    addOptiLanguage('goLang')
+//*******************************************************************************
+    //Edit
+
+   //edit krne ke liye pehle element ka select krna jruri h
+  const secondLang= document.querySelector('li:nth-child(2)')/*This is a CSS pseudo-class selector that means:
+                                              “Select the 2nd <li> element inside its parent list.”
+                                               So it finds the second list item (<li>) within a <ul> or <ol>.*/
+  // secondLang.innerHTML="mojo" // but it is not optimised
+  //optimised way
+  const newLi=document.createElement('li')
+  newLi.textContent="Mojo"
+  secondLang.replaceWith(newLi)
+  /*
+const newLi = document.createElement('li');
+const textNode = document.createTextNode('Mojo'); // create a text node
+newLi.appendChild(textNode);                      // attach it to <li>
+secondLang.replaceWith(newLi);                    // replace the old one
+  */
+
+
+//edit ->other method of replacing
+const firstLang=document.querySelector('li:first-child')
+firstLang.outerHTML="<li>TypeScript</li>"
+
+//*************************************************************************
+//remove
+
+const lastLang=document.querySelector('li:last-child')
+lastLang.remove()
+
+</script>
+</html>
+
+/*Selector	           Meaning	                 Example
+'li:first-child'	Selects the first <li>	       Apple
+'li:last-child'	    Selects the last <li>	       Cherry
+'li:nth-child(3)'	Selects the third <li>	        Cherry
+'li:nth-child(odd)'	Selects all odd list items	  1st, 3rd, 5th
+'li:nth-child(even)'Selects all even list items	   2nd, 4th
+
+⚠️ Important Tip
+
+querySelector() only returns the first matching element.
+
+If you want all matching elements, use:
+document.querySelectorAll('li:nth-child(2)');
+
+→ It returns a NodeList of all matches (you can loop through it).
+*/
