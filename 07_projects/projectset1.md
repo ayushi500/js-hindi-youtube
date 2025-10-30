@@ -211,7 +211,7 @@ window.addEventListener('keydown',(e)=>{
 })
 ```
 
-##project 6 solution
+## project 6 solution
 ```javascript
 //generate a random color
 const randomColor=function(){
