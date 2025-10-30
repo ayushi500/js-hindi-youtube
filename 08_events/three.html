@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Chai aur JavaScript</h1>
+    <button id="stop">Stop</button>
+    <button id="start">Start</button>
+</body>
+<script>
+// setInterval(function(){
+//     console.log("Hitesh",Date.now());  //Date.now()=>number ke format me date aa jati hai
+// },1000) //The program get repeats its execution after 1s
+
+//By reference
+
+// const sayDate=function(){
+//    console.log("Hitesh",Date.now());
+// }
+// setInterval(sayDate,1000)
+
+//yha hum 3rd parameter bhi le skte hain
+
+const sayDate=function(str){
+   console.log(str,Date.now());
+}
+//setInterval(sayDate,1000,"Hi") //yha ab "Hi" print hoga in place of "Hitesh"
+
+//we can also use clearInterval but it also requires reference
+//const intervalId=setInterval(sayDate,1000,'hi')
+//clearInterval(intervalId) 
+
+// ACTIVITY-jb main start pr click kru tb setInterval call ho jaaye and jb stop pr kru,to stop ho jaaye
+ let intervalId;
+
+document.querySelector('#start').addEventListener('click',function(){
+    intervalId= setInterval(sayDate,1000,'hi')
+})
+document.querySelector('#stop').addEventListener('click',function(){
+        clearInterval(intervalId)
+        console.log("STOPPED")
+    })
+    //**********************************************************
+    // project 6 in mark down file
+
+</script>
+</html>
