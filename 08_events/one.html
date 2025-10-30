@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+   /*JS ke andar jitna bhi code hain..wo sequentially hi run hote hain...except some exceptions such as these
+    events which we are going to study in this
+   These events invoked only on an activity like keyboard pressing,mouse pointer */
+
+//    document.getElementById('owl').onclick=function(){
+//     alert("owl clicked")
+//    }   =>not a good method
+
+         
+      //Earlier,we also used this
+      //attachEvent()
+      // jQuery()-on  // But now we use event Listeners
+         
+       //Events which i need to study
+
+      //type, timestamp, defaultPrevented, 
+      // target, toElement, srcElement, currentTarget,
+      //clientX, clientY, screenX, screenY
+      //altkey, ctrlkey,shiftkey,keyCode
+
+   /*   document.getElementById('owl').addEventListener('click',function(e){  //e is event object
+       console.log(e)
+      },false) /*       //false is default
+      
+     //Event Propogation *****************************************
+
+     /*Event propagation has 2 contexts-:Event Bubbling,Event capturing
+     Market me mostly Default case use hota hai..jo ki false hota h and wo
+     hota hai event Bubbling
+     Event bubbling(default)=>false
+
+     Lekin kch scenarios me event capturing ka bhi use hota hai 
+     */
+
+//      document.getElementById('images').addEventListener('click',function(e){  //e is event object
+//        console.log("clicked inside the ul")
+//       },false)  //it activates when we click on images
+//      document.getElementById('owl').addEventListener('click',function(e){  //e is event object
+//        console.log("owl clicked")
+//       },false)  //it activates when we click on owl
+
+
+// /*jb aap owl pe click krenge,toh as owl is also inside the images(ul),so ul
+// se bhi owl activate hoga
+
+// Now question is that ki phele kya print hoga->"clicked inside the ul" or
+// "owl clicked" 
+
+// ans=>
+// owl clicked
+// clicked inside the ul
+
+// yha pe event Bubbling hua : means ki chota wala pehle activate hua 
+// and then bda wala...Jaise ki bubble neeche se oopar jata h
+//       */
+//      document.getElementById('images').addEventListener('click',function(e){  //e is event object
+//        console.log("clicked inside the ul")
+//       })  
+//      document.getElementById('owl').addEventListener('click',function(e){  //e is event object
+//        console.log("owl clicked")
+//       })
+
+
+// //its ans is same as above:owl clicked
+//                         // clicked inside the ul
+
+
+
+// //Capturing mode
+//     document.getElementById('images').addEventListener('click',function(e){  //e is event object
+//        console.log("clicked inside the ul")
+//       },true)  
+//      document.getElementById('owl').addEventListener('click',function(e){  //e is event object
+//        console.log("owl clicked")
+//       },true)
+
+// /* ans=>
+// clicked inside the ul
+// owl clicked
+//       */
+
+//       //***Depending on the use case ,we have to choose either false or true
+
+// //*************************************************************************
+
+// //if we have to stop the propagation
+// document.getElementById('images').addEventListener('click',function(e){  //e is event object
+//        console.log("clicked inside the ul")
+//       })  
+//      document.getElementById('owl').addEventListener('click',function(e){  //e is event object
+//        console.log("owl clicked")
+//        e.stopPropagation()
+//       }) //ab li oopar nhi jayega that is we separated both events
+
+//   //**********************************************************************
+  
+//   //using preventDefault
+// //if we want to stop any action-Example,we dont want to go on a google website in clicking
+// document.getElementById("google").addEventListener('click',function(e){
+//     console.log("google clicked")
+//     e.preventDefault();
+// },false)
+
+// // ans=>google clicked
+// //     clicked inside ul  (due to event bubbling)
+
+// //to stop event bubbling as well as preventDefault
+// document.getElementById("google").addEventListener('click',function(e){
+//     console.log("google clicked")
+//     e.preventDefault();
+//     e.stopPropagation();
+// },false)
+
+// ans=>google clicked
+
+//**********************************************************************
+/*
+ACTIVITY:Main jis bhi image ko click kru,wo gayab ho jaaye
+*/
+
+//Instead of selecting one by one image,we will select all the images simultaneously
+// document.querySelector('#images').addEventListener( 'click',function(e){
+//     /*
+//     e.target=img ,if we click on img that is present in browser
+//     but if we click on li ,we get e.target = li
+//     and so its parent node will be ul,and if we apply 
+//     e.target.parentNode.remove(),so whole ul gets removed
+//     lly, if we click on ul,we get e.target=li and so its parent node will be div
+//     and if we apply e.target.parentNode.remove(),so whole div will be removed
+//     */
+//   console.log(e.target.parentNode)
+//   let removeIt=e.target.parentNode  // li
+//   removeIt.remove() 
+//  /* or
+//   removeIt.parentNode.removeChild(removeIt)  -> parentNode of remove it:ul
+//                                              ul ka child=li,so remove li */
+// })
+
+
+
+   //e.target = the child element that actually fired the event.
+
+   /*when we click on img, it is <img> element..but yha pe kewal img element hi aarha h
+   click krne pe but hume li ko bhi htana hoga,otherwise wo whi pe rhega,
+   so we will select entire li i.e parent of img element */
+
+
+//*************
+
+
+//in order to prevent the disappearance of whole ul,we can apply conditions
+document.querySelector('#images').addEventListener('click',function(e){
+    console.log(e.target.tagName)
+    /*tagName is a property of a DOM element in JavaScript that tells you the name
+     of the HTML tag of that element (like DIV, BUTTON, P, H1, etc.). always in uppercase*/
+    if(e.target.tagName=='IMG'){
+      e.target.parentNode.remove();
+    }
+    
+})
+</script>
+</html>
