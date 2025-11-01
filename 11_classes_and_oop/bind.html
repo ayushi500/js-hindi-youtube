@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+</head>
+<body>
+    <button>Button Clicked</button>
+</body>
+<script>
+  class React{
+    constructor(){
+        this.library="React"
+        this.server="https://localhost:300"
+
+        //requirement  -> jaise ye page load ho,waise hi object create ho jaaye react ka
+   //button ka refernce mil jaaye and button click krne pe function krne lg jaaye
+       document
+            .querySelector('button')
+            .addEventListener('click' ,this.handleClick.bind(this))  //yha pe handleClick ka refernce hi nhi tha,to 'this' ka use kiya hai
+    //handleClick.bind() ke saath saare functions attach ho kr chle gye hain
+    }
+    handleClick(){
+        console.log("button clicked")
+        console.log(this.server)  //undefined  ->yha reference to mil gya hai,but suw ni ho rha hai,undefined show ho rha hai
+                                  //so hume yha bind ka use krna hoga
+    }                          
+  }
+
+const app=new React()
+
+</script>
+
+</html>
