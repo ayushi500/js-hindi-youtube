@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure aur Chai</title>
+</head>
+<body style="background-color:#313131;">
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+    
+</body>
+
+<script>
+//Lexical Scopping
+
+//     function init() {
+//     let name = "Mozilla"; // name is a local variable created by init
+//     function displayName() {
+//     // displayName() is the inner function, that forms a closure
+//     console.log(name); // use variable declared in the parent function
+//   }
+//     displayName();
+// }
+// init();
+
+
+// function outer(){
+//     let username="hitesh"
+//     console.log("outer",secret)  //error-?undefined
+//     function inner(){
+//         let secret="my123"
+//         console.log("inner",username)
+//     }
+//     function innerTwo(){
+//         console.log("innerTwo",username)
+//         console.log(secret)  //error->secret is undefined
+//     }
+//     inner()
+//     innerTwo()
+// }
+// outer()
+// console.log("too outer",username)  //erroe->not defined
+/*
+inner hitesh
+innerTwo hitesh
+closure.html:32 Uncaught ReferenceError: username is not defined
+    
+*/
+
+//********************************************************************
+
+//closure
+function makeFunc() {
+    const name = "Mozilla";
+    function displayName() {
+       console.log(name);
+  }
+    return displayName;  //yha pe kewal display name hi nhi jata,but 
+    // jis jis se diplay name ka connection hai,i.e const name etc,wo 
+    // sb jaayega i.e uska lexical scope jaayega(lexical scope return hota hai)
+}
+
+    const myFunc = makeFunc();
+    myFunc();  //Mozilla
+
+</script>
+
+<script>
+//   document.getElementById("orange").onclick=function(){   //onclick ko function chahiye hota hai
+//     document.body.style.backgroundColor="orange"
+//   }
+//   document.getElementById("green").onclick=function(){   
+//     document.body.style.backgroundColor="green"
+//   }   //dry=>don't repeat yourself
+
+  //if there are too many buttons,so instead of copying it again,we create a function
+
+//   function clickHandler(color){
+//      document.body.style.backgroundColor=`${color}`
+//   }
+
+  document.getElementById('orange').onclick=clickHandler("orange")  //yha mujhe bina button pe click kiye huye orange mil gya,so this is not currect
+//yha hum expect kr rhe the ki ye function return krega,but yha pe to function hi execute ho gya
+//so we need to change the definiton of function
+
+function clickHandler(color){
+     //document.body.style.backgroundColor=`${color}`
+     return function(){
+        document.body.style.backgroundColor=`${color}`
+     }
+  }
+   document.getElementById('orange').onclick=clickHandler("orange")
+   document.getElementById('green').onclick=clickHandler("green")
+</script>
+</html>
