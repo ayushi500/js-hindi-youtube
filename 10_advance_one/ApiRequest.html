@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #212121;">
+    Value	State	Description
+0	UNSENT	Client has been created. open() not called yet.
+1	OPENED	open() has been called.
+2	HEADERS_RECEIVED	send() has been called, and headers and status are available.
+3	LOADING	Downloading; responseText holds partial data.
+4	DONE	The operation is complete.
+</body>
+<script>
+
+    /*
+    XMLHttpRequest (short form: xhr) is an old JavaScript API used to:
+
+    Send requests to servers (like APIs)
+    Receive responses from servers
+
+    Before fetch() existed, this was the main way to make AJAX calls (Asynchronous JavaScript and XML).
+    */
+
+    const requestUrl='https://api.github.com/users/hiteshchoudhary'
+    const xhr=new XMLHttpRequest();  //iske through hum apna data send kr skte hain and receive bhi kr skte hain
+    //xhr is almost a class so isse ek object bhi bnana pdega,so to make object we use new
+    
+    xhr.open('GET',requestUrl) //xhr.open(method,link of api)=>method means kis type ki request send krna chate ho..GET,POST,PUT
+    /*
+    You’re preparing the request — telling xhr:
+
+    Method: 'GET' — you want to fetch data (not send anything).
+
+    URL: requestUrl — the API endpoint.
+
+👉 This doesn’t actually send the request yet; it only initializes it.
+    */
+
+    //statechange ko continuously track krne ke liye we use onreadystatechange
+    xhr.onreadystatechange=function(){  //onreadystatechange=>This is an event listener — it runs every time the request’s state changes.
+        console.log(xhr.readyState)  //readyState=>It tells you the progress of your request.there are 5 possible states
+        if(xhr.readyState===4){
+            const data=this.responseText 
+            //console.log(data)  //this.responseText contains the actual response data (as a string).
+        //most of the time jo response aata hai url me,wo string me aata h
+             //console.log(typeof data); //string
+             //so we need to convert our string into JSON data
+
+            
+             const data2=JSON.parse(this.responseText)
+              console.log(data2)
+             console.log(typeof data2);
+             console.log(data2.followers); 
+             
+
+        }
+    }
+    
+    
+    xhr.send(); //open ko call krne ke liye
+</script>
+</html>
